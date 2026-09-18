@@ -4,6 +4,8 @@ export const fr = {
     expertises: "Expertises",
     approach: "Approche",
     team: "Équipe",
+    sectors: "Secteurs",
+    publications: "Publications",
     contact: "Nous contacter"
   },
   home: {

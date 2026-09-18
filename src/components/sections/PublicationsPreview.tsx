@@ -4,26 +4,36 @@ import { Reveal } from '../motion/Reveal';
 import { SectionLabel } from '../ui/SectionLabel';
 import { Button } from '../ui/Button';
 import { useTranslation } from 'react-i18next';
+import { cn } from '../../lib/utils';
 
-export const PublicationsPreview: React.FC = () => {
+interface PublicationsPreviewProps {
+  hideHeader?: boolean;
+}
+
+export const PublicationsPreview: React.FC<PublicationsPreviewProps> = ({ hideHeader = false }) => {
   const { t } = useTranslation();
   return (
-    <section className="py-16 md:py-32 bg-editorial-bg text-editorial-text border-y border-editorial-border/10">
+    <section className={cn(
+      "pb-16 md:pb-32 bg-editorial-bg text-editorial-text border-b border-editorial-border/10",
+      hideHeader ? "pt-12 md:pt-16" : "pt-16 md:pt-32 border-t"
+    )}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20">
-          <Reveal>
-            <SectionLabel text={t('home.publicationsPreview.label')} />
-            <h2 className="font-serif text-4xl md:text-5xl uppercase tracking-widest">
-              {t('home.publicationsPreview.label')}
-            </h2>
-          </Reveal>
-          <Reveal delay={0.2} className="mt-8 md:mt-0">
-            <Button asLink="/publications" variant="outline" size="sm" withArrow>
-              {t('home.publicationsPreview.cta')}
-            </Button>
-          </Reveal>
-        </div>
+        {!hideHeader && (
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20">
+            <Reveal>
+              <SectionLabel text={t('home.publicationsPreview.label')} />
+              <h2 className="font-serif text-4xl md:text-5xl uppercase tracking-widest">
+                {t('home.publicationsPreview.label')}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.2} className="mt-8 md:mt-0">
+              <Button asLink="/publications" variant="outline" size="sm" withArrow>
+                {t('home.publicationsPreview.cta')}
+              </Button>
+            </Reveal>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-4">
           {publications.map((pub, index) => (

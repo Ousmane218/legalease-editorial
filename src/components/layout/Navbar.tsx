@@ -45,14 +45,14 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-10 items-center">
+          <div className="hidden md:flex space-x-6 lg:space-x-10 items-center">
             {navigation.map((item) => (
               <Link 
                 key={item.nameKey} 
                 to={item.path}
                 className={cn(
                   "text-xs uppercase tracking-widest transition-colors duration-300",
-                  pathname === item.path ? "text-editorial-accent font-medium" : "text-editorial-light/70 hover:text-editorial-light"
+                  pathname === item.path ? "text-editorial-text font-semibold" : "text-editorial-text/60 hover:text-editorial-text"
                 )}
               >
                 {t(item.nameKey)}
@@ -61,11 +61,11 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <LanguageSwitcher />
             <Link 
               to="/contact" 
-              className="text-xs uppercase tracking-widest text-editorial-light hover:text-editorial-accent transition-colors duration-300 border border-editorial-light/20 hover:border-editorial-accent px-6 py-2"
+              className="text-xs uppercase tracking-widest text-editorial-text hover:text-editorial-accent transition-colors duration-300 border border-editorial-text/20 hover:border-editorial-accent px-6 py-2"
             >
               {t('nav.contact')} ↗
             </Link>
